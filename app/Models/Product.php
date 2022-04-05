@@ -9,6 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
+    //status of the products
+    const DRAFT = 0;
+    const PUBLISHED = 1;
+
     //unable massive allocation
     protected $guarder = ['id', 'created_at', 'updated_at'];
 
