@@ -1,4 +1,15 @@
-<header class="bg-blue-500">
+<style>
+    #navigation-menu {
+        height: calc(100vh - 4rem);
+    }
+
+    .navigation-link:hover .navigation-submenu {
+        display: block !important;
+    }
+
+</style>
+
+<header class="bg-blue-500 sticky top-0">
     <div class="container flex items-center h-16">
         <a class="flex flex-col items-center justify-center px-5 bg-white bg-opacity-25 text-white cursor-pointer font-semibold h-full">
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -82,5 +93,34 @@
 
 
     </div>
+
+    <nav id="navigation-menu" class="bg-gray-300 bg-opacity-25 w-full absolute">
+        <div class="container h-full">
+            <div class="grid grid-cols-4 h-full relative">
+                <ul class="bg-white">
+                    @foreach ($categories as $category)
+                        <li class="navigation-link text-gray-500 hover:bg-orange-200 hover:text-white">
+                            <a href="" class="py-2 px-4 text-sm flex items-center">
+
+                                <span class="flex justify-center w-9">
+                                    {!!$category->icon!!}
+                                </span>
+                                {{$category->name}}
+                            </a>
+
+                            <div class="navigation-submenu bg-gray-100 absolute w-3/4 h-full top-0 right-0 hidden">
+                                <x-navigation-subcategories :category="$category" />
+                            </div>
+                        </li>
+                    @endforeach
+
+                </ul>
+
+                <div class="col-span-3 bg-gray-100">
+                   <x-navigation-subcategories :category="$categories->first()" />
+                </div>
+            </div>
+        </div>
+    </nav>
     
 </header>
