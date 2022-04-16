@@ -33606,6 +33606,14 @@ select {
   }
 }
 
+#navigation-menu {
+  height: calc(100vh - 4rem);
+}
+
+.navigation-link:hover .navigation-submenu {
+  display: block !important;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
